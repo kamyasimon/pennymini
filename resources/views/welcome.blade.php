@@ -21,9 +21,11 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="container-container" id="app">
+        <div class="container-fluid" id="app">
+            
             <Home></Home>
+            
         </div>
-        <script src="/js/app.js"></script>
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

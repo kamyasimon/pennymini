@@ -1,20 +1,25 @@
 <template>
    <div class="container-fluid">
-       <div class="row">
-           <nav class="nav nav-fill">
-               <li class="nav-item">
-                   <a class="nav-link active" href="#">Home</a>
-               </li>
-               <li class="nav-item">
-                   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Item 2</a>
-               </li>
-           </nav>
+       <div>
+           <Nav></Nav>
        </div>
+       <div>
+           
+            <router-view/>
+       </div>
+
+      
+        
    </div>
+
 </template>
 
 <script>
+import Nav from '../components/Navcomponent.vue'
     export default {
+        components: {
+            Nav
+        },
         mounted() {
             console.log('Component mounted.')
         }

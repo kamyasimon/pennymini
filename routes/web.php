@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth:sanctum','prefix'=>'auth','namespace'=>'Auth'] , function() ////in providers/routerservice providerd Uncomment for name space to work
+{ 
+    Route::post('/loginuser', [App\Http\Controllers\Auth\AuthController::class, 'loginuser']);
+
+});
