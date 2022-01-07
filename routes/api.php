@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Auth::routes();
+Route::post('/registeruser', [App\Http\Controllers\Auth\AuthController::class, 'registeruser']);
+Route::post('/loginuser', [App\Http\Controllers\Auth\AuthController::class, 'loginuser']);
+Route::post('/logoutuser', [App\Http\Controllers\Auth\AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:sanctum','namespace'=>'Auth'] , function() ////in providers/routerservice providerd Uncomment for name space to work
+{ 
+    Route::get('/dashboard', [App\Http\Controllers\Auth\DashboardController::class, 'dashboard']);
 });

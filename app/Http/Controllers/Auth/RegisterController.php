@@ -66,7 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return $user= User::create([
+         $user= User::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'telephone' => $data['telephone'],
@@ -76,6 +76,12 @@ class RegisterController extends Controller
 
         $token= $user->createToken('usertoken')->plainTextToken;
 
+        $response=[
+           'user'=> $user,
+           'token'=> $token
+        ];
+       
+        return response($response,201);
  
     }
 

@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
         <title>Laravel</title>
 
@@ -21,11 +22,11 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="container-fluid" id="app">
-            
-            <Home></Home>
-            
-        </div>
-        <script src="{{ mix('js/app.js') }}"></script>
+   
+    <div id="app">
+    <Home></Home>
+</div>
+
+<script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
     </body>
 </html>

@@ -79,14 +79,10 @@ export default {
                   password:this.user.password
                 }
                 
-                ///register link
-             await   axios.post('/register',userdata)
-                      .then(function (response) {
-                        alert (response.data);
-                      })
-                      .catch(function (error) {
-                        alert(error);
-                      });
+               
+                  this.$store.dispatch('registeruser', userdata)
+            
+               
                 
       }
     },

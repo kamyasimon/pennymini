@@ -3,7 +3,7 @@
       <b-col class="col-6" >
         <b-card>
         <b-card-header header-bg-variant="success">
-          {{loggedin.firstname}}
+         
             <p>Login</p>
         </b-card-header>
               <b-card-body>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+
 export default {
 data() {
   return {
@@ -41,6 +42,7 @@ data() {
       {email:''},
       {password:''},
     ],
+    
   }
 },
 methods: {
@@ -51,30 +53,18 @@ methods: {
           email:this.login.email,
           password:this.login.password
         }
-          console.log('tag', credentials)
-          /*
-        axios.post('/loginuser',credentials)
-                      .then(function (response) {
-                        alert (response.data);
-                      })
-                      .catch(function (error) {
-                        alert(error);
-                      });*/
-
-      ///disptach to login
+    
        this.$store.dispatch('login', credentials)
                     
   }
 },
 
-computed: {
-  loggedin() {
-    return this.$store.getters.getuser;
-  }
-},
+
+
 }
 </script>
 
 <style>
+
 
 </style>

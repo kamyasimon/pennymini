@@ -11,8 +11,14 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
 
+
+*/
+/*
+Route::get('{any}', function () {
+    return view('welcome');
+})->where('any', '.*');
+ */
 Route::get('/', function () {
     return view('welcome');
 });
@@ -21,8 +27,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware'=>'auth:sanctum','prefix'=>'auth','namespace'=>'Auth'] , function() ////in providers/routerservice providerd Uncomment for name space to work
-{ 
-    Route::post('/loginuser', [App\Http\Controllers\Auth\AuthController::class, 'loginuser']);
 
-});
