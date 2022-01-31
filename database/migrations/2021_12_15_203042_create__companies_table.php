@@ -18,6 +18,7 @@ class CreateCompaniesTable extends Migration
             $table->string('businessname');
             $table->string('companykey');
             $table->integer('manager')->nullable();
+            $table->integer('access')->default(1);
 
                 /////FK///////
                 $table->integer('fk_suprememanager')->unsigned();///for the topic  the subtopic topic belongs to

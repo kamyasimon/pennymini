@@ -2,7 +2,7 @@
   <b-container fluid>
       <p>Dash Board</p>
       <b-row>
-          <Investiments/>
+          <Investiments :capital ="allinvest" />
       </b-row>
      <b-row class="mt-5">
 <Investimenttable/>
@@ -21,10 +21,30 @@ export default {
     },
     data() {
         return {
-          
+          allinvest:''
         }
     },
+methods: {
+    investiments() {
+       
+            this.$store.dispatch('getinvestiments');
+       
+    },
+},
 
+
+    beforeMount() {
+      this.investiments()
+    },
+    mounted() {
+      console.log("mounted")
+    },
+computed: {
+    invest() {
+        console.log(this.$store.getters.getinvestiments)
+        return this.$store.getters.getinvestiments
+    }
+},
     
 }
 </script>

@@ -4,6 +4,7 @@ import Login from '../pages/Loginpage.vue'
 import Home from '../pages/Home.vue'
 import Dashboard from '../pages/Dashboard.vue'
 import Register from '../pages/Registerpage.vue'
+import Accounts from '../pages/Accounts.vue'
 Vue.use(VueRouter)
 const routes = [
    { 
@@ -27,6 +28,12 @@ const routes = [
     name:'dashboard',
 
     },
+
+    {
+      path:'/accounts',
+      component: Accounts,
+      name:'accounts'
+    }
     //{ path: '/bar', component: Bar }
   ]
 

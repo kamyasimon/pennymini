@@ -3,7 +3,7 @@
 
     <b-row>
         <ul class="col-12 d-flex flex-row justify-content-around aligh-items-center">
-            <li>Investiment Capital: 100 USD</li>
+            <li>Investiment Capital: {{capital}} USD</li>
             <li>WithDraw: 0 USD</li>
             <li>Balance: 130 USD</li>
         </ul>
@@ -32,11 +32,13 @@
 </template>
 <script>
 export default {
+    props: ['capital'],
     data() {
         return {
            
         }
     },
+    
 }
 </script>
 

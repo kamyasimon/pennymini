@@ -8,7 +8,7 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item v-if="loggedin !== '' "><router-link class="a" :to="{name: 'dashboard'}">DashBoard</router-link></b-nav-item>
-        
+        <b-nav-item v-if="loggedin !== '' "><router-link class="a" :to="{name: 'accounts'}">Accounts</router-link></b-nav-item>  
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

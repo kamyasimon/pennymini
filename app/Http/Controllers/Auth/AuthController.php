@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Investiments;
 
 class AuthController extends Controller
 {
@@ -58,11 +59,18 @@ class AuthController extends Controller
             'password' => Hash::make($regdata['password']),
         ]);
 
-        $token= $user->createToken('usertoken')->plainTextToken;
+       // dd($user->id);
+        $createinvestiments = Investiments::create([
+            'fkuser'=>$user->id,
+        ]);
+
+       
+
+      //  $token= $user->createToken('usertoken')->plainTextToken;
 
         $response=[
            'user'=> $user,
-           'token'=> $token
+         //  'token'=> $token
         ];
        
         return response($response,201);

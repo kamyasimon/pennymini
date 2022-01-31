@@ -21,4 +21,5 @@ Route::post('/logoutuser', [App\Http\Controllers\Auth\AuthController::class, 'lo
 Route::group(['middleware' => 'auth:sanctum','namespace'=>'Auth'] , function() ////in providers/routerservice providerd Uncomment for name space to work
 { 
     Route::get('/dashboard', [App\Http\Controllers\Auth\DashboardController::class, 'dashboard']);
+    Route::post('/getinvestiments', [App\Http\Controllers\InvestimentsController::class, 'getinvestiment']);
 });

@@ -12,9 +12,10 @@ Vue.use(Vuex);
     state:{
         login:JSON.parse(localStorage.getItem('user')) || '',
       // login:localStorage.getItem('user')||'',
-       token:localStorage.getItem('token')||'',
+      // token:localStorage.getItem('token')||'',
         haslogin:false,
-       // token:JSON.parse(localStorage.getItem('token')) || '',
+        token:JSON.parse(localStorage.getItem('token')) || '',
+        investiments:'tttt',
 
     },
 
@@ -44,6 +45,11 @@ Vue.use(Vuex);
        // state.login = localStorage.getItem('user');
       //  state.token = localStorage.getItem('token');
        
+       },
+
+       updateinvestiments(state,investiment){
+       // console.log(investiment[0])
+          //  state.investiments = investiment[0]
        }
 
    },
@@ -63,10 +69,10 @@ Vue.use(Vuex);
                                 let userx = response.data
                                 console.log('tag', response.data)
                               
-                                  //  if(userx !== null){
+                                    if(userx !== null){
                                         state.commit('updatelogin', userx);
                                           router.push("dashboard")
-                                  //  }
+                                   }
                               
                             
                                 })
@@ -85,12 +91,14 @@ Vue.use(Vuex);
                             await   axios.post('api/registeruser',userdata)
                             
                             .then(function (response) {
-                                let userr = response.data
+                                let userx= response.data
                                 //console.log('tag', response.data)
                                 
-                                    if(userr !== null){
-                                       // state.commit('updatelogin', userx);
-                                       router.go("dashboard")
+                                   if(userx !== null){
+                                   //  state.commit('updatelogin', userx);
+                                 router.push("/loginuser")
+                                    }else{
+                                       router.push("/")
                                     }
                                 
                             })
@@ -107,8 +115,8 @@ Vue.use(Vuex);
 
                      async logoutuser(state){
 
-                      ///  localStorage.removeItem('user')
-                     //   localStorage.removeItem('token')
+                      //  localStorage.removeItem('user')
+                     //  localStorage.removeItem('token')
 
                       const storedtoken = this.getters.getusertoken
                       axios.defaults.headers['Authorization']= 'Bearer '+ storedtoken
@@ -132,8 +140,41 @@ Vue.use(Vuex);
                             console.log(response.status)
                         })
 
-                     }
-                     
+                     },
+    /////////////////////GET INVESTIMENT/////////////////////
+    async getinvestiments(state){
+
+        //  localStorage.removeItem('user')
+       //  localStorage.removeItem('token')
+
+        const storedtoken = this.getters.getusertoken
+        axios.defaults.headers['Authorization']= 'Bearer '+ storedtoken
+        const userid={
+            user:this.getters.getuser.id
+        }
+          var config= {
+              method:'POST',
+              url:'api/getinvestiments',
+                data:userid,
+              Headers:{
+                  'content-Type':'application/Json',
+              }
+          };
+
+          await axios(config)
+          .then(function(response){
+                let investiment = response.data
+            
+              if(response.status == 200){
+
+                state.commit('updateinvestiments',investiment)
+
+              }
+              console.log(response.status)
+          })
+
+       }, 
+                 
 
                      
     },
@@ -148,6 +189,10 @@ Vue.use(Vuex);
             console.log('Getters:'+ state.token);
             return state.token;
         }
+    },
+    getinvestiments(state){
+        console.log(state.investiments)
+       // return state.investiments;
     }
 })
 
